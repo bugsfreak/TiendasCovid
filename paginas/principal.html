@@ -27,19 +27,37 @@
             </div>
         </nav>
     
-        <form action="/enviar" method="post" class="card w-50 h-50">
+        <form action="/ingresar" method="post" class="card w-50 h-50">
             <label> Usuario </label>
-            <input type="text" class="form-control" name="tarea"> <br>
+            <input type="text" class="form-control" name="usuario"> <br>
             <label> Tienda </label>
-            <input type="text" class="form-control" name="responsable"> <br>
-            <label for="cars">Estado del cliente </label> <br>
-            <select class="form-control" id="combo" name="prioridad">
+            <input type="text" class="form-control" name="tienda"> <br>
+            <label for="estados">Estado del cliente </label>
+            <select class="form-control" id="combo" name="estado">
                 <option value="Alto">Normal</option>
                 <option value="Medio">Caso</option>
                 <option value="Bajo">Cercano</option>
             </select>
-            <input type="submit" class="btn-primary" value="Añadir">  </input>
-            
+            <input type="submit" class="btn btn-lg btn-primary" value="Añadir">  </input>
         </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Tienda</th>
+                    <th scope="col">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuarios in listaUsuarios %}
+                <tr>
+                    <td>{{usuarios.usuario}}</td>
+                    <td>{{usuarios.tienda}}</td>
+                    <td>{{usuarios.estado}}</td>        
+                </tr>  
+                {% endfor %}
+            </tbody>
+        </table>  
 </body>
 </html>

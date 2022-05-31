@@ -1,8 +1,10 @@
 
-from flask import Flask, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask('__name__',template_folder='paginas')
 
+listaDeUsuarios = []
+listaDeUsuariosTiendas = []
 
 @app.route('/')
 def login():
@@ -19,7 +21,7 @@ def login():
     return render_template('login.html')
 
 @app.route('/login', methods=['POST','GET'])
-def principal():
+def validacion():
     '''
         Valida el usuario y contrasenia
 
@@ -34,12 +36,36 @@ def principal():
     if(request.method == 'POST'):
         usuario = request.form['usuario']
         contrasenia = request.form['contrasenia']
-    
         if(usuario == 'prueba' and contrasenia == 'admin'):
-            return render_template('principal.html')
+            return redirect(url_for('principal'))
         else:
             return render_template('login.html')
 
+@app.route('/principal')
+def principal():
+    return render_template('principal.html',listaUsuarios = listaDeUsuariosTiendas)
+
+
+
+@app.route('/ingresar', methods=['POST','GET'])
+def ingresar():
+    '''
+        Permite el ingreso de usuarios y tiendas a la lista
+
+        parametros:
+            ninguno
+        returns:
+            redirect página principal
+
+    '''
+
+    if(request.method == 'post'):
+        usuario = request.form['usuario']
+        tienda = request.form['tienda']
+        estado = request.form['estado']
+        listaDeUsuariosTiendas.append({'usuario': usuario , 'tienda': tienda, 'estado': estado})
+        print(listaDeUsuariosTiendas)
+    return redirect(url_for('principal'))
     
     
 
