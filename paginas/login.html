@@ -15,9 +15,23 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
 
-        <form action="/" method="POST">
+        <nav class="navbar navbar-expand-lg bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand">Login</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+               
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <form action="/login" method="POST" class="w-50 h-50">
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Usuario</label>
+              <label for="exampleInputUser1" class="form-label">Usuario</label>
               <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="usuario">
             </div>
             <div class="mb-3">
